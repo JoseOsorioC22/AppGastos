@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <title>App Gastos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/darkly/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!--Navegation-->
+    <div class="navbar navbar-primary bg-primary">
+        <div class="navbar-brand">
+            <a href="/">App de Gastos</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row pt-5">
+            <div class="col-md-7">
+                <table id="tablaGastos" class="table table-bordered table-responsive">
+                    <thead>
+                        <td>Tipo</td>
+                        <td style="width: 200px;">Descripcion</td>
+                        <td style="width: 125px;" >Monto</td>
+                        <td style="width: 125px;" >Categoria</td>
+                        <td style="width: 130px;">Fecha</td>
+                    </thead>
+
+                    <tbody>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-header">
+                     <h4>  Tabla gastos</h4>
+                    </div>
+
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <label>Tipo gasto: </label>
+                                <label for="ingreso" >Ingreso</label>
+                                <input type="radio" id="ingreso" name="tipoGasto" >
+
+                                <label for="egreso">Egreso</label>
+                                <input type="radio" id="egreso" name="tipoGasto" >
+                               
+                            </div>
+
+                            <div class="form-group">
+                                <label for="descripcion">Descripcion:</label>
+                                <input type="text" id="descripcion" class="form-control" placeholder="" autocomplete="off" />
+                            </div>
+
+                         
+                            <div class="form-group">
+                                <label for="monto">Monto:</label>
+                                <input type="number" id="monto" min="0.0" class="form-control"/>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="categoria">Categoria</label>
+                                <select id="categoria" class="form-control">
+                                    <option>Comida</option>
+                                    <option>Medicamentos</option>
+                                    <option>Construcción</option>
+                                    <option>Servicios</option>
+                                </select>
+                            </div>
+
+                <br>
+                            <button type="submit" id="btSave" class="btn btn-primary">Añadir</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="App.js"></script>
+</html>
+
