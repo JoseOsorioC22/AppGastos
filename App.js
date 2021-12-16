@@ -49,7 +49,7 @@ const insertRowTransactionTable = (transactionObject) => {
   newTypeCellRef = newTransactionRow.insertCell(4);
   newTypeCellRef.textContent = new Date().toLocaleDateString();
 };
-
+   // 
 function saveTransactionObject(transactionObject)
 {
   let myTransactionArray = JSON.parse(localStorage.getItem("TransactionData")) || []; 
