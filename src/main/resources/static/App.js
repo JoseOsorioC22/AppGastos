@@ -48,6 +48,17 @@ const insertRowTransactionTable = (transactionObject) => {
 
   newTypeCellRef = newTransactionRow.insertCell(4);
   newTypeCellRef.textContent = new Date().toLocaleDateString();
+
+  let deleteCell = newTransactionRow.insertCell(5); 
+  let deleteButton = document.createElement("button"); 
+  deleteButton.textContent = "Eliminar"; 
+  
+  let editButton =  document.createElement("button"); 
+  editButton.textContent = "Editar"; 
+ 
+ deleteCell.appendChild(deleteButton); 
+ deleteCell.appendChild(editButton); 
+
 };
    // 
 function saveTransactionObject(transactionObject)
@@ -55,15 +66,23 @@ function saveTransactionObject(transactionObject)
   let myTransactionArray = JSON.parse(localStorage.getItem("TransactionData")) || []; 
   myTransactionArray.push(transactionObject); 
 
-  // convierto mi array de tranasaction a json 
+  // convierto mi array de transaction a json
   let transactionObjectToJson = JSON.stringify(myTransactionArray);
   // Guardo mi array de transaction en el LocalStorage 
   localStorage.setItem("TransactionData", transactionObjectToJson); 
 }
 
-document.addEventListener("DOMContentLoaded", function(){
-   let TransactionObjectArray = JSON.parse(localStorage.getItem("TransactionData")); 
-   for (const objeto of  TransactionObjectArray) {
-    insertRowTransactionTable(objeto); 
-   }
+  document.addEventListener("DOMContentLoaded", async function(){
+     const request = await fetch('gastos', {
+       method: 'GET',
+       headers: {
+         'Accept': 'application/json',
+         'Content-Type': 'application/json'
+       },
+     });
+     const gastos = await request.json();
+    
+     gastos.forEach(gasto => {
+       insertRowTransactionTable(gasto); 
+     });
 })
