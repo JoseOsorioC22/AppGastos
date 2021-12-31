@@ -1,13 +1,35 @@
 package com.proyectogastos.AppGastos.models;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+import javax.persistence.*;
 import java.util.Date;
+
+@Entity
+@Table(name="gasto")
+@ToString
 public class Gasto {
 
-    private Long idGasto;
-    private String descripcion;
-    private double monto;
-    private String categoria;
-    private Date Fecha;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Getter @Setter @Column(name = "id_gasto")
+    private int idGasto;
+    @Getter @Setter @Column(name = "tipo")
     private String tipo;
+    @Getter @Setter @Column(name = "descripcion")
+    private String descripcion;
+    @Getter @Setter @Column(name = "fecha")
+    private Date Fecha;
+    @Getter @Setter @Column(name = "monto")
+    private double monto;
+    @Getter @Setter @Column(name = "categoria")
+    private int categoria;
+    @Getter @Setter @Column(name = "producto")
+    private int producto;
+
+
+
 
     public Gasto()
     {
@@ -16,60 +38,4 @@ public class Gasto {
 
 
 
-    public Gasto(Long idGasto, String descripcion, double monto, String categoria, Date fecha, String tipo) {
-        this.idGasto = idGasto;
-        this.descripcion = descripcion;
-        this.monto = monto;
-        this.categoria = categoria;
-        this.Fecha = fecha;
-        this.tipo = tipo;
-    }
-
-    public Long getIdGasto() {
-        return idGasto;
-    }
-
-    public void setIdGasto(Long idGasto) {
-        this.idGasto = idGasto;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public double getMonto() {
-        return monto;
-    }
-
-    public void setMonto(double monto) {
-        this.monto = monto;
-    }
-
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
-
-    public Date getFecha() {
-        return Fecha;
-    }
-
-    public void setFecha(Date fecha) {
-        Fecha = fecha;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
 }

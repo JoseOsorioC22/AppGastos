@@ -12,16 +12,18 @@ form.addEventListener("submit", (e) => {
 });
 
 function convertFormDataToOjectTransaction(transactionFormData) {
-  let tipoGasto = transactionFormData.get("tipoGasto");
+  let tipo = transactionFormData.get("tipo");
   let descripcion = transactionFormData.get("descripcion");
   let monto = transactionFormData.get("monto");
   let categoria = transactionFormData.get("categoria");
+  let fecha = transactionFormData.get("fecha"); 
 
   return {
-    "tipoGasto": tipoGasto,
+    "tipo": tipo,
     "descripcion": descripcion,
     "monto": monto,
     "categoria": categoria,
+    "fecha" : fecha
   };
 }
 
@@ -34,8 +36,8 @@ const insertRowTransactionTable = (transactionObject) => {
   let newTransactionRow = tablaGastos.insertRow(-1);
 
   // Y luego acá insertamos las celdas.
-  let newTypeCellRef = newTransactionRow.insertCell(0); 
-  newTypeCellRef.textContent = transactionObject.tipoGasto; 
+  let newTypeCellRef = newTransactionRow.insertCell(0);  
+  newTypeCellRef.textContent = transactionObject.tipo; 
 
   newTypeCellRef = newTransactionRow.insertCell(1);
   newTypeCellRef.textContent = transactionObject.descripcion; 
@@ -47,12 +49,19 @@ const insertRowTransactionTable = (transactionObject) => {
   newTypeCellRef.textContent = transactionObject.categoria; 
 
   newTypeCellRef = newTransactionRow.insertCell(4);
-  newTypeCellRef.textContent = new Date().toLocaleDateString();
+  newTypeCellRef.textContent = transactionObject.fecha; 
 
   let deleteCell = newTransactionRow.insertCell(5); 
   let deleteButton = document.createElement("button"); 
   deleteButton.textContent = "Eliminar"; 
-  
+ deleteButton.setAttribute("id", "idPrueba");
+
+ deleteButton.addEventListener("click", () =>
+ {
+     alert("mostrando Jose !"); 
+ }); 
+
+
   let editButton =  document.createElement("button"); 
   editButton.textContent = "Editar"; 
  
@@ -86,3 +95,5 @@ function saveTransactionObject(transactionObject)
        insertRowTransactionTable(gasto); 
      });
 })
+
+const btnEliminar = document.getElementById("idPrueba"); 
