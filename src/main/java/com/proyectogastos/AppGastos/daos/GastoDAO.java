@@ -1,9 +1,10 @@
 package com.proyectogastos.AppGastos.daos;
 
 import java.util.List;
+import com.proyectogastos.AppGastos.models.Gasto;
+public interface GastoDAO {
 
-public interface GastoDAO <T,K>{
-
-    public List<K> getGastos();
-
+    public List<Gasto> getGastos();
+    public void eliminarGasto(int id);
+    public void registrar(Gasto gasto);
 }
